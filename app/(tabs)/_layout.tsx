@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
-import { Book, Chrome as Home, QrCode, UtensilsCrossed } from 'lucide-react-native';
+import { Book, Chrome as Home, QrCode, UtensilsCrossed, MapPin } from 'lucide-react-native';
+import { BlurView } from 'expo-blur';
 
 type TabIconProps = {
   color: string;
@@ -11,10 +12,23 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#4CAF50',
+        tabBarActiveTintColor: '#67B26F',
         tabBarInactiveTintColor: '#757575',
         tabBarStyle: {
-          borderTopColor: '#E0E0E0',
+          height: 60,
+          borderTopWidth: 0,
+          elevation: 8,
+          shadowColor: '#000000',
+          shadowOffset: { width: 0, height: -3 },
+          shadowOpacity: 0.05,
+          shadowRadius: 8,
+        },
+        tabBarItemStyle: {
+          paddingVertical: 8,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '500',
         },
         headerShown: false,
       }}>
@@ -32,7 +46,6 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }: TabIconProps) => <QrCode size={size} color={color} />,
         }}
       />
-      {/* Временно отключена вкладка places
       <Tabs.Screen
         name="places"
         options={{
@@ -40,7 +53,6 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }: TabIconProps) => <MapPin size={size} color={color} />,
         }}
       />
-      */}
       <Tabs.Screen
         name="recipes"
         options={{
